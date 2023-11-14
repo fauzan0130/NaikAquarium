@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Checkout{% endblock title %}
+{% block style %}
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+{% endblock style %}
+{% block body_block %}
+<h1 style="text-align: center;" >Order Details</h1>
+<div class="container" style="margin-top:5%">
+    <div class="row mt-5">
+        <div class="col-sm-6">
+            <hr>
+            {% for item in cart_items %}
+            <div class="card mb-2">
+                <div class="card-body d-flex">
+                    <img src="{{item.product.product_img.url}}" class="img-fluid img-thumbnail" width="20%" alt="">
+                    <div class="order-text custom-oreder-text" style="margin: 0 20px;">
+                        <h5>{{item.product.title}}</h5>
+                        <p>Quantity: {{item.quantity}}</p>
+                        <p class=" fw-bold">Price: {{item.total_cost}}</p>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+            <h5 class="fw-bold" style="text-decoration: underline;">Total amount: {{total_amount}}</h5>
+            <small></small>
+        </div>
+        <div class="col-sm-4 offset-sm-1">
+            <h4>Select Shipping Address</h4>
+            <hr>
+            <form action="/orderplaced">
+                {% for ad in add %}
+                <div class="card">
+                    <div class="card-body">
+                        <h5>{{ad.name}}</h5>
+                        <p>{{ad.house_number}}, {{ad.locality}}, {{ad.landmark}}, {{ad.city}}</p>
+                    </div>
+                </div>
+                <div class="form-check mt-2 mb-5">
+                    <input class="form-check-input" type="radio" name="custid" id="custadd{{forloop.counter}}"
+                        value="{{ad.id}}" checked>
+                    <label class="form-check-label fw-bold" for="">
+                        Address: {{ forloop.counter }} </label>
+                </div>
+                {% endfor %}
+                <div style="display: flex;">
+                    <h5>Your Details: </h5><a href="{% url 'user_profile' %}" class="btn btn-primary mx-2">Add Address
+                        </a>
+                </div>
+                <!-- {% if total_amount >= 100 %} -->
+                <div class="text-end">
+                    {% for ad in add %}
+                    {% if forloop.counter == 0 %}
+                        <h5>Your Details: </h5><a href="{% url 'user_profile' %}" class="btn btn-primary mx-2">Add Address</a>
+                        {% else %}
+                        {% endif %}
+                        <button type="submit" class="btn btn-warning mt-3 px-5 fw-bold my-4">Place Order</button>
+                    {% endfor %}
+                </div>
+                <!-- {% else %} -->
+                <a href="{% url 'home' %}" class="btn btn-danger mt-3 px-5 fw-bold my-4">Your order must be above Rs.
+                    100(Including shipping).</a>
+                <!-- {% endif %} -->
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock body_block %}

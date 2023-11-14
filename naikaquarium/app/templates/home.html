@@ -1,0 +1,327 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} Home {% endblock title %}
+
+{% block style %}
+
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+{% endblock style %}
+
+
+{% block body_block %}
+
+<!-- Section 1: Banner -->
+
+      
+<section class="sec-1">
+    <div class="heading-image">
+      <img src="{% static 'images/main-banner.png' %}" alt="Banner">
+    </div>
+    <div class="heading">
+        <h1>Naik Aquarium</h1>
+        <h1>& Pet Shop</h1>
+        <h5>Best place to buy pet food</h5>
+        <a href="#fishfood" class="btn btn-warning">Shop Now!</a>
+    </div>
+  </section>
+
+
+  <!-- ----------------------------------------------------------------------------------------------------------------- -->
+  <!-- Section 2: Categories -->
+
+
+  <section class="cat">
+    <div class="sub-cat">
+      <div class="image">
+        <img src="{% static 'images/fish.png' %}" alt="">
+      </div>
+      <div class="info">
+        <h5>Buy the best Fish Food</h5>
+        <a href="#fishfood" class="btn btn-warning">Buy Fish Food</a>
+      </div>
+    </div><hr>
+
+    <div class="sub-cat edit-cat">
+      <div class="image">
+        <img src="{% static 'images/dog.png' %}" alt="">
+      </div>
+      <div class="info">
+        <h5>Buy the best Pet Food</h5>
+        <a href="#dogfood" class="btn btn-warning">Buy Now</a>
+      </div>
+    </div><hr>
+
+    <div class="sub-cat">
+      <div class="image">
+        <img src="{% static 'images/other.png' %}" alt="">
+      </div>
+      <div class="info">
+        <h5>One stop for all your pet accessories at one place</h5>
+        <a href="#assc" class="btn btn-warning">Buy Pet Accessories</a>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- Section 2.2 -->
+  <section class="sel-cat">
+    <h2 style="text-align: center;">Top Offers</h2>
+    <div class="sel-cat-main">
+
+      {% for o in offers %}
+      <div class="cat-details">
+        <div class="cat-image">
+          <!-- <img src="{{o.image.url}}" alt="Product Image"> -->
+        </div>
+        <div class="cat-info">
+          <h4>{{o.heading}}</h4>
+          <h5>{{o.text}}</h5>
+          <a href="#{{o.category}}" class="btn btn-primary">Shop Now</a>
+        </div>
+      </div>
+      {% endfor %}
+     
+    </div>
+  </section>
+
+
+  <!-- ----------------------------------------------------------- -->
+  <!-- Section 3: Display Items -->
+
+
+  <section class="display" id="fishfood">
+    <h2>Fish Food</h2><hr>
+    <div class="products">
+
+      {% for f in fish %}
+      <div class="product-details">
+        <div class="product-image">
+          <img src="{{f.product_img.url}}" alt="Product Image">
+        </div>
+        <div class="product-info">
+          <h4>{{f.title}}</h4>
+          <h5><span>{{f.original_price}}</span></h5>
+          <h5>₹ {{f.price}}</h5>
+          {% if f.is_active == False %}
+          <h5>Out Of Stock</h5>
+          {% else %}
+
+          <div class="add_cart_item">
+            <a href="{% url 'product_detail' f.id %}" class="btn btn-primary px-4 btn-order">Buy</a>
+        </div>
+
+          {% if request.user.is_authenticated %}
+          {% if product_in_cart %}
+          <a href="{% url 'display_cart' %}" class="btn btn-primary">Buy Now</a>
+          {% else %}
+          <form action="/add_to_cart" class="d-inline">
+            <input type="hidden" name="prod_id" value="{{product.id}}" id="prod_id">
+          </form>
+          {% endif %}
+          {% endif %}
+
+          {% if not request.user.is_authenticated %}
+            <a href="{% url 'login' %}" class="d-inline">
+                <input type="hidden" name="prod_id" value="{{product.id}}" id="prod_id">
+            </a>
+            {% endif %}
+
+          {% endif %}
+        </div>
+      </div>
+      {% endfor %}
+
+    </div>
+  </section>
+
+
+
+
+  <section class="display" id="catfood">
+    <h2>Cat Food</h2><hr>
+    <div class="products">
+
+      {% for c in cat %}
+      <div class="product-details">
+        <div class="product-image">
+          <img src="{{c.product_img.url}}" alt="Product Image">
+        </div>
+        <div class="product-info">
+          <h4>{{c.title}}</h4>
+          <h5><span>{{c.original_price}}</span></h5>
+          <h5>₹ {{c.price}}</h5>
+          {% if c.is_active == False %}
+          <h5>Out Of Stock</h5>
+          {% else %}
+
+          <div class="add_cart_item">
+            <a href="{% url 'product_detail' c.id %}" class="btn btn-primary px-4 btn-order">Buy</a>
+        </div>
+
+          {% if request.user.is_authenticated %}
+          {% if product_in_cart %}
+          <a href="{% url 'display_cart' %}" class="btn btn-primary">Buy Now</a>
+          {% else %}
+          <form action="/add_to_cart" class="d-inline">
+            <input type="hidden" name="prod_id" value="{{product.id}}" id="prod_id">
+          </form>
+          {% endif %}
+          {% endif %}
+
+          {% if not request.user.is_authenticated %}
+            <a href="{% url 'login' %}" class="d-inline">
+                <input type="hidden" name="prod_id" value="{{product.id}}" id="prod_id">
+            </a>
+            {% endif %}
+
+          {% endif %}
+        </div>
+      </div>
+      {% endfor %}
+
+    </div>
+  </section>
+
+
+
+  <section class="display" id="dogfood">
+    <h2>Dog</h2><hr>
+    <div class="products">
+
+      {% for d in dog %}
+      <div class="product-details">
+        <div class="product-image">
+          <img src="{{d.product_img.url}}" alt="Product Image">
+        </div>
+        <div class="product-info">
+          <h4>{{d.title}}</h4>
+          <h5><span>{{d.original_price}}</span></h5>
+          <h5>₹ {{d.price}}</h5>
+          {% if d.is_active == False %}
+          <h5>Out Of Stock</h5>
+          {% else %}
+
+          <div class="add_cart_item">
+            <a href="{% url 'product_detail' d.id %}" class="btn btn-primary px-4 btn-order">Buy</a>
+        </div>
+
+          {% if request.user.is_authenticated %}
+          {% if product_in_cart %}
+          <a href="{% url 'display_cart' %}" class="btn btn-primary">Buy Now</a>
+          {% else %}
+          <form action="/add_to_cart" class="d-inline">
+            <input type="hidden" name="prod_id" value="{{product.id}}" id="prod_id">
+          </form>
+          {% endif %}
+          {% endif %}
+
+          {% if not request.user.is_authenticated %}
+            <a href="{% url 'login' %}" class="d-inline">
+                <input type="hidden" name="prod_id" value="{{product.id}}" id="prod_id">
+            </a>
+            {% endif %}
+
+          {% endif %}
+        </div>
+      </div>
+      {% endfor %}
+
+    </div>
+  </section>
+
+
+
+  <section class="display" id="petfish">
+    <h2>Pet Fish</h2><hr>
+    <div class="products">
+
+      {% for p in pet %}
+      <div class="product-details">
+        <div class="product-image">
+          <img src="{{p.product_img.url}}" alt="Product Image">
+        </div>
+        <div class="product-info">
+          <h4>{{p.title}}</h4>
+          <h5><span>{{p.original_price}}</span></h5>
+          <h5>₹ {{p.price}}</h5>
+          {% if p.is_active == False %}
+          <h5>Out Of Stock</h5>
+          {% else %}
+
+          <div class="add_cart_item">
+            <a href="{% url 'product_detail' p.id %}" class="btn btn-primary px-4 btn-order">Buy</a>
+        </div>
+
+          {% if request.user.is_authenticated %}
+          {% if product_in_cart %}
+          <a href="{% url 'display_cart' %}" class="btn btn-primary">Buy Now</a>
+          {% else %}
+          <form action="/add_to_cart" class="d-inline">
+            <input type="hidden" name="prod_id" value="{{product.id}}" id="prod_id">
+          </form>
+          {% endif %}
+          {% endif %}
+
+          {% if not request.user.is_authenticated %}
+            <a href="{% url 'login' %}" class="d-inline">
+                <input type="hidden" name="prod_id" value="{{product.id}}" id="prod_id">
+            </a>
+            {% endif %}
+
+          {% endif %}
+        </div>
+      </div>
+      {% endfor %}
+
+    </div>
+  </section>
+
+
+  <section class="display" id="assc">
+    <h2>Pet Accessories</h2><hr>
+    <div class="products">
+
+      {% for a in assc %}
+      <div class="product-details">
+        <div class="product-image">
+          <img src="{{a.product_img.url}}" alt="Product Image">
+        </div>
+        <div class="product-info">
+          <h4>{{a.title}}</h4>
+          <h5><span>{{a.original_price}}</span></h5>
+          <h5>₹ {{a.price}}</h5>
+          {% if a.is_active == False %}
+          <h5>Out Of Stock</h5>
+          {% else %}
+
+          <div class="add_cart_item">
+            <a href="{% url 'product_detail' a.id %}" class="btn btn-primary px-4 btn-order">Buy</a>
+        </div>
+
+          {% if request.user.is_authenticated %}
+          {% if product_in_cart %}
+          <a href="{% url 'display_cart' %}" class="btn btn-primary">Buy Now</a>
+          {% else %}
+          <form action="/add_to_cart" class="d-inline">
+            <input type="hidden" name="prod_id" value="{{product.id}}" id="prod_id">
+          </form>
+          {% endif %}
+          {% endif %}
+
+          {% if not request.user.is_authenticated %}
+            <a href="{% url 'login' %}" class="d-inline">
+                <input type="hidden" name="prod_id" value="{{product.id}}" id="prod_id">
+            </a>
+            {% endif %}
+
+          {% endif %}
+        </div>
+      </div>
+      {% endfor %}
+
+    </div>
+  </section>
+
+{% endblock body_block %}

@@ -1,0 +1,413 @@
+html{
+    scroll-behavior: smooth;
+}
+body{
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    /* box-sizing: border-box; */
+}
+/* ------------------------------------------------------------------- */
+/* Navigation bar */
+.custom-nav{
+    /* margin: 10px 20px; */
+    /* border: 1px solid gray; */
+    /* border-radius: 10px; */
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+.custom-ul li a{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+ul li a:hover{
+    color: gray !important;
+}
+ul li a span{
+    padding: 0 5px;
+}
+
+/* ----------------------------------------------------------------- */
+/* Section 1: Banner */
+
+.sec-1{
+    /* background: rgba(0, 0, 0, 0.5) url("./banner3.jpg"); */
+    width: 100%;
+    height: 80vh;
+    border-bottom-left-radius: 250% 160px;
+    border-bottom-right-radius: 250% 160px;
+    /* background-size: cover;
+    background-blend-mode: darken; */
+    display: flex;
+    justify-content: center;
+    background-color: aqua;
+}
+.heading-image img{
+    width: 100%;
+}
+.heading{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: end;
+    color: black;
+    margin-right: 7%;
+    /* padding-top: 15%; */
+}
+.heading h1{
+    font-size: 90px;
+    font-weight: 700;
+}
+.heading h5{
+    font-size: 20px;
+}
+
+/* ------------------------------------------------------------------- */
+/* Section 2: Categories */
+
+
+
+.sub-cat{
+    display: flex;
+    justify-content: center;
+}
+.edit-cat{
+    flex-direction: row-reverse;
+}
+.info{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin: 40px 10px;
+    padding: 20px 70px;
+}
+.info h5{
+    text-align: center;
+}
+.image img{
+    width: 70%;
+}
+hr{
+   border: 1px solid gray;
+   width: 90%; 
+}
+
+
+/* Section 2.2 */
+.sel-cat-main{
+    display: flex;
+    /* display: grid;
+    grid-template-columns: repeat(5, 1fr); */
+    gap: 10px;
+    margin: 40px;
+    padding: 10px 70px;
+    overflow: scroll;
+    overflow-anchor: auto;
+    
+    /* background-color: aqua; */
+}
+.cat-details{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin: 10px;
+    border: 1px solid gray;
+    border-radius: 10px;
+}
+.cat-image img{
+    width: 100%;
+    border-radius: 10px 10px 0 0;
+}
+.cat-info{
+    margin: 20px;
+}
+.cat-info h5 span{
+    text-decoration: line-through;
+}
+.cat-info h4{
+    font-weight: 600;
+}
+.cat-info h5{
+    font-weight: 500;
+}
+
+/* ------------------------------------------------------- */
+/* Section 3: Display Items */
+
+.display{
+    background-color: aqua;
+    padding: 20px 20px;
+    margin: 40px;
+    border: 1px solid gray;
+    border-radius: 10px;
+}
+.display h2{
+    text-align: center;
+    font-size: 37px;
+    font: 800;
+}
+.display hr{
+    border: 1px solid black;
+    width: 17%;
+}
+.products{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    padding: 10px 70px;
+}
+.product-details{
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    align-items: left;
+    margin: 10px;
+    /* padding: 2px; */
+    background-color: white;
+    /* border: 2px solid gray; */
+    border-radius: 10px;
+}
+.product-image img{
+    width: 100%;
+    border-radius: 10px 10px 0 0;
+}
+.product-info{
+    margin: 20px;
+}
+.product-info h5 span{
+    text-decoration: line-through;
+}
+.product-info h4{
+    font-weight: 600;
+}
+.product-info h5{
+    font-weight: 500;
+}
+
+
+/* ----------------------------------------------------------- */
+/* Footer */
+footer{
+    color: white;
+    padding: 4%;
+    text-align: center;
+}
+footer li{
+    list-style: none;
+}
+
+
+/* ------------------------------------------------------------- */
+/* SignUp form */
+
+.signup-main{
+    margin: 20px 60px;
+    padding: 10px 40px;
+    background-color: aqua;
+    border: 1px solid gray;
+    border-radius: 10px;
+}
+.signup-main h1{
+    text-align: center;
+    font-weight: 700;
+}
+.signup{
+    display: flex;
+    justify-content: center;
+}
+.v-line{
+    border: 1px solid gray;
+    margin: 0 20px;
+}
+.signup-form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;    
+}
+/* .signup-form input */
+.input{
+    width: 100%;
+    padding: 7px 50px;
+    border: 1px solid gray;
+    border-radius: 10px;
+    margin: 10px 0;
+}
+.dynamic-form{
+    width: 100%;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+}
+.custom-form{
+    background-color: aqua;
+    padding: 1px 30px;
+    border: 2px solid gray;
+    border-radius: 10px;
+}
+/* ------------------------------------------------------ */
+/* Responsive */
+
+@media only screen and (max-width: 680px){
+
+    /* Section 1: Banner */
+    .sec-1{
+    /* background: rgba(0, 0, 0, 0.5) url("./banner-main1.jpg"); */
+    flex-direction: column;
+    background-size: cover;
+    height: 90vh;
+    }
+    .heading-image img{
+        width: 100%;
+        margin-top: -20%;
+    }
+    .heading{
+        margin: 10px;
+        /* padding: 80px 20px; */
+        align-items: start;
+    }
+    .heading h1{
+        font-size: 57px;
+    }
+
+    /* Section 2: Categories */
+
+    .sub-cat{
+        flex-direction: column;
+    }
+    .image img{
+        width: 100%;
+    }
+
+
+    /* Section 2.2 */
+    .sel-cat-main{
+        /* overflow: hidden; */
+        overflow: scroll;
+        overflow-anchor: auto;
+        margin-left: -20px;
+    }
+    .cat-details{
+        margin: 0;
+    }
+    .cat-image img{
+        margin-top: -10px;
+    }
+
+    /* Section 3: Display Products */
+    .display{
+        padding: 0;
+        margin: 12px;
+    }
+    .products{
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0px;
+        padding: 0;
+    }
+    .product-info{
+        margin: 10px;
+    }
+    .product-info h4, .cat-info h4{
+        font-size: 17px;
+    }
+    .product-info h5, .cat-info h5{
+        font-size: 14px;
+    }
+    .product-info a{
+        width: 70%;
+        height: auto;
+    }
+
+
+    /* Footer */
+    footer{
+        padding: 20px 0;
+    }
+    footer h6, footer li{
+        font-size: 10px;
+    }
+
+    /* Signup Form */
+    .signup-main{
+        margin: 10px;
+        padding: 10px 0;
+    }
+    .signup{
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .signup-image img{
+        width: 100%;
+    }
+    .v-line{
+        width: 90%;
+    }
+    .signup-form{
+        align-items: left;
+        margin-left: -40px;
+    }
+    .input{
+        width: 80%;
+        margin: 0;
+        padding: 7px 20px;
+    }
+}
+
+/* ------------------------------------------- */
+/* For Tablets */
+@media screen and (min-width : 768px){
+    .products{
+        padding: 10px 0;
+    }
+}
+
+@media screen and (min-width: 690px) and (max-width : 730px){
+    .sec-1{
+        height: 90vh;
+        align-items: center;
+        flex-direction: row;
+    }
+    .heading h1{
+        font-size: 50px;
+    }
+    .products{
+        grid-template-columns: repeat(3, 1fr);
+        padding: 0;
+    }
+}
+
+
+
+@media screen and (min-width: 760px) and (max-width: 920px){
+    .sec-1{
+        flex-direction: column;
+        height: 100vh;
+    }
+    .heading{
+        align-items: center;
+    }
+    .heading h1, h5, a{
+        text-align: start;
+    }
+  }
+
+
+/* Galaxy fold */
+@media screen and (max-width: 290px){
+    .heading h1{
+        font-size: 50px;
+    }
+    .products{
+        grid-template-columns: repeat(1, 1fr);
+    }
+}
